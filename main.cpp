@@ -338,7 +338,7 @@ int main(void)
     {
         for (Days = 1; PortfolioValue > 0; Days++)
         {
-
+            DaysChange = 0;
             cout << "\n\nIt is now Day " << Days << endl;
             cout << "1 - Market" << endl;
             cout << "2 - Bank" << endl;
@@ -364,15 +364,18 @@ int main(void)
             }
             else if (Input == 3)
             {
-
+                cout << "Here are your stats:" << endl;
             }
             else if (Input == 4)
             {
-
+                cout << "Moving 1 day forward in time . . ." << endl;
+                DaysChange = 1;
             }
             else if (Input == 5)
             {
-
+                cout << "Moving 7 days forward in time . . ." << endl;
+                DaysChange = 7;
+                Days = Days + 6;
             }
             else if (Input == 6)
             {
