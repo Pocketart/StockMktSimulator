@@ -335,15 +335,34 @@ int main(void)
 
         for (int mc = 1; mc <= Firms; mc++)
         {
-            int mccalc = 1 + pow(10,mc);
-            Market[mc] = 1 + rand()%mccalc;
+            int mccalc = (1 + pow(10,mc));
+            Market[mc] = double(1 + rand()%mccalc);
         }
 
         for (Days = 1; PortfolioValue > 0; Days++)
         {
             for (int mc = 1; mc <= Firms; mc++)
             {
-                Market[mc] = (Market[mc] * pow((1 + (((1 + rand()%10) - 5 )/100)),DaysChange));
+                int ranran = 1+rand()%200;
+                if (Difficulty == )
+                if (ranran == 1)
+                    Market[mc] = Market[mc]*1.3;
+                else if (ranran >= 2 && ranran <= 10)
+                    Market[mc] = Market[mc]*1.1;
+                else if (ranran >= 10 && ranran <= 25)
+                    Market[mc] = Market[mc]*1.05;
+                else if (ranran > 25 && ranran <= 40)
+                    Market[mc] = Market[mc]*1.04;
+                else if (ranran > 40 && ranran <= 50)
+                    Market[mc] = Market[mc]*1.02;
+                else if (ranran == 51)
+                    Market[mc] = Market[mc]*0.82;
+                else if (ranran > 51 && ranran <=60)
+                    Market[mc] =
+
+
+                Market[mc] = (Market[mc] + 1);
+                cout << Market[mc] << endl;
             }
 
             DaysChange = 0;
