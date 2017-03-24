@@ -315,6 +315,12 @@ int main(void)
         }
     }
     cout << "Closing Tutorial . . ." << endl;
+
+    /* * * * * * * * * * * * *
+     * Begin the actual game *
+     * * * * * * * * * * * * *
+     */
+
     cout << "The game will now begin with your difficulty level set to " << Difficulty << endl;
     cout << "Before you begin, I would like to remind you that your progress will not be saved" << endl << endl;
 
@@ -331,7 +337,9 @@ int main(void)
         BankBalance = 0;
         LoanLimit = 5000/Difficulty;
         Firms = (3 + (2*Level));
-        double*Market = new double[Firms]; // runtime array
+        double*Market = new double[Firms]; // runtime array [Share Prices]
+        int*Shares = new int[Firms]; // runtime array [Share Count]
+        double*MarketSharesValue = new double[Firms]; // runtime array [Value of share holdings]
 
         for (int mc = 1; mc <= Firms; mc++)
         {
@@ -344,7 +352,6 @@ int main(void)
             for (int mc = 1; mc <= Firms; mc++)
             {
                 int ranran = 1+rand()%200;
-                if (Difficulty == )
                 if (ranran == 1)
                     Market[mc] = Market[mc]*1.3;
                 else if (ranran >= 2 && ranran <= 10)
@@ -356,13 +363,12 @@ int main(void)
                 else if (ranran > 40 && ranran <= 50)
                     Market[mc] = Market[mc]*1.02;
                 else if (ranran == 51)
-                    Market[mc] = Market[mc]*0.82;
+                    Market[mc] = Market[mc]*0.72;
                 else if (ranran > 51 && ranran <=60)
-                    Market[mc] =
+                    Market[mc] = Market[mc]*2;
 
 
                 Market[mc] = (Market[mc] + 1);
-                cout << Market[mc] << endl;
             }
 
             DaysChange = 0;
@@ -387,7 +393,20 @@ int main(void)
                 cout << "Here are the available stocks:" << endl;
                 for (int m = 1; m <= Firms; m++)
                 {
-                    cout << showpoint << "Firm" << m << "       $" << Market[m] << endl;
+                    cout << showpoint << m << " - Firm" << m << " - $" << Market[m] << endl;
+                }
+                cin >> Input;
+                if (Input == 0)
+                {
+
+                }
+                else
+                {
+                    for (int ioc = 1; Input != ioc; ioc++)
+                    {
+
+                    }
+
                 }
             }
             else if (Input == 2)
