@@ -357,23 +357,27 @@ int main(void)
             {
                 for (int mc = 1; mc <= Firms; mc++)
                 {
-                    int ranran = 1+rand()%200;
+                    int ranran = 1+rand()%202;
                     if (ranran <= 1 && ranran < 15)
-                        Market[mc] = Market[mc]*1.5;
+                        Market[mc] = Market[mc]*1.3;
                     else if (ranran >= 15 && ranran < 45)
-                        Market[mc] = Market[mc]*1.1;
+                        Market[mc] = Market[mc]*1.23;
                     else if (ranran >= 45 && ranran < 90)
-                        Market[mc] = Market[mc]*1.03;
+                        Market[mc] = Market[mc]*1.05;
                     else if (ranran >= 90 && ranran < 100)
-                        Market[mc] = Market[mc];
+                        Market[mc] = Market[mc]*1.1;
                     else if (ranran >= 100 && ranran < 115)
-                        Market[mc] = Market[mc]*0.70;
+                        Market[mc] = Market[mc]*0.80;
                     else if (ranran >= 115 && ranran < 145)
-                        Market[mc] = Market[mc]*0.90;
+                        Market[mc] = Market[mc]*0.93;
                     else if (ranran >= 145 && ranran < 190)
                         Market[mc] = Market[mc]*0.95;
                     else if (ranran >= 190 && ranran <= 200)
-                        Market[mc] = Market[mc];
+                        Market[mc] = Market[mc]*0.87;
+                    else if (ranran == 201)
+                        Market[mc] = Market[mc]*3;
+                    else if (ranran == 202)
+                        Market[mc] = Market[mc]*0.32;
                 }
             }
 
@@ -404,7 +408,7 @@ int main(void)
                 cin >> Input;
                 if (Input == 0)
                 {
-
+                    Days--;
                 }
                 else
                 {
@@ -414,6 +418,7 @@ int main(void)
                     }
 
                 }
+                Input = 0;
             }
             else if (Input == 2)
             {
@@ -447,7 +452,6 @@ int main(void)
             }
         }
     }
-
 
 //    for (Level = 1; PortfolioValue > 0; Level++)
 //    {
