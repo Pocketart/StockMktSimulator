@@ -375,7 +375,7 @@ int main(void)
                     else if (ranran >= 190 && ranran <= 200)
                         Market[mc] = Market[mc]*0.87;
                     else if (ranran == 201)
-                        Market[mc] = Market[mc]*3;
+                        Market[mc] = Market[mc]*3.3;
                     else if (ranran == 202)
                         Market[mc] = Market[mc]*0.32;
                 }
