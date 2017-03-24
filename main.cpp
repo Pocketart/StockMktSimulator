@@ -343,32 +343,38 @@ int main(void)
 
         for (int mc = 1; mc <= Firms; mc++)
         {
-            int mccalc = (1 + pow(10,mc));
+            int mccalc = (1 + pow(6,mc));
             Market[mc] = double(1 + rand()%mccalc);
         }
 
         for (Days = 1; PortfolioValue > 0; Days++)
         {
-            for (int mc = 1; mc <= Firms; mc++)
+            if (DaysChange == 0)
             {
-                int ranran = 1+rand()%200;
-                if (ranran == 1)
-                    Market[mc] = Market[mc]*1.3;
-                else if (ranran >= 2 && ranran <= 10)
-                    Market[mc] = Market[mc]*1.1;
-                else if (ranran >= 10 && ranran <= 25)
-                    Market[mc] = Market[mc]*1.05;
-                else if (ranran > 25 && ranran <= 40)
-                    Market[mc] = Market[mc]*1.04;
-                else if (ranran > 40 && ranran <= 50)
-                    Market[mc] = Market[mc]*1.02;
-                else if (ranran == 51)
-                    Market[mc] = Market[mc]*0.72;
-                else if (ranran > 51 && ranran <=60)
-                    Market[mc] = Market[mc]*2;
 
-
-                Market[mc] = (Market[mc] + 1);
+            }
+            else if (DaysChange > 0)
+            {
+                for (int mc = 1; mc <= Firms; mc++)
+                {
+                    int ranran = 1+rand()%200;
+                    if (ranran <= 1 && ranran < 15)
+                        Market[mc] = Market[mc]*1.5;
+                    else if (ranran >= 15 && ranran < 45)
+                        Market[mc] = Market[mc]*1.1;
+                    else if (ranran >= 45 && ranran < 90)
+                        Market[mc] = Market[mc]*1.03;
+                    else if (ranran >= 90 && ranran < 100)
+                        Market[mc] = Market[mc];
+                    else if (ranran >= 100 && ranran < 115)
+                        Market[mc] = Market[mc]*0.70;
+                    else if (ranran >= 115 && ranran < 145)
+                        Market[mc] = Market[mc]*0.90;
+                    else if (ranran >= 145 && ranran < 190)
+                        Market[mc] = Market[mc]*0.95;
+                    else if (ranran >= 190 && ranran <= 200)
+                        Market[mc] = Market[mc];
+                }
             }
 
             DaysChange = 0;
@@ -393,7 +399,7 @@ int main(void)
                 cout << "Here are the available stocks:" << endl;
                 for (int m = 1; m <= Firms; m++)
                 {
-                    cout << showpoint << m << " - Firm" << m << " - $" << Market[m] << endl;
+                    cout << showpoint << m << " - Firm" << m << " - $" << setprecision(13) << Market[m] << endl;
                 }
                 cin >> Input;
                 if (Input == 0)
