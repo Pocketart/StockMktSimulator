@@ -319,26 +319,35 @@ int main(void)
     cout << "Before you begin, I would like to remind you that your progress will not be saved" << endl << endl;
 
     // Fill default values
-    StartingCash = 3000/Difficulty;
-    Balance = StartingCash;
-    PortfolioValue = 1000;
-    BankBalance = 0;
-    LoanLimit = 5000/Difficulty;
     Level = 1;
-    Firms = 5;
     Target = 4000*(Difficulty/2);
-    double*Market = new double[Firms];
-    for (int i = 0; i < Firms; i++)
-    {
-        Market[i] = ((1 + rand()%3)/100);
-        cout << Market[i];
-    }
+
 
     for (int Level = 1; Level <= 5; Level++)
     {
+        StartingCash = 3000/(Difficulty+Level-1);
+        Balance = StartingCash;
+        PortfolioValue = 1000;
+        BankBalance = 0;
+        LoanLimit = 5000/Difficulty;
+        Firms = (3 + (2*Level));
+        double*Market = new double[Firms]; // runtime array
+
+        for (int mc = 1; mc <= Firms; mc++)
+        {
+            int mccalc = 1 + pow(10,mc);
+            Market[mc] = 1 + rand()%mccalc;
+        }
+
         for (Days = 1; PortfolioValue > 0; Days++)
         {
+            for (int mc = 1; mc <= Firms; mc++)
+            {
+                Market[mc] = (Market[mc] * pow((1 + (((1 + rand()%10) - 5 )/100)),DaysChange));
+            }
+
             DaysChange = 0;
+
             cout << "\n\nIt is now Day " << Days << endl;
             cout << "1 - Market" << endl;
             cout << "2 - Bank" << endl;
@@ -356,7 +365,11 @@ int main(void)
             }
             if (Input == 1)
             {
-
+                cout << "Here are the available stocks:" << endl;
+                for (int m = 1; m <= Firms; m++)
+                {
+                    cout << showpoint << "Firm" << m << "       $" << Market[m] << endl;
+                }
             }
             else if (Input == 2)
             {
@@ -390,21 +403,6 @@ int main(void)
             }
         }
     }
-
-    // experimental code
-
-    Market[1] = 1;
-    Market[2] = 2;
-    Market[3] = 3;
-    Market[4] = 4;
-    Market[5] = 5;
-
-    cout << Market[0] << endl;
-    cout << Market[1] << endl;
-    cout << Market[2] << endl;
-    cout << Market[3] << endl;
-    cout << Market[4] << endl;
-    cout << Market[5] << endl;
 
 
 //    for (Level = 1; PortfolioValue > 0; Level++)
