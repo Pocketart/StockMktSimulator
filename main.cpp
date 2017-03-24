@@ -15,6 +15,7 @@
 #include <iomanip>
 #include <string>
 
+
 using namespace std;
 int main(void)
 
@@ -338,7 +339,7 @@ int main(void)
         LoanLimit = 5000/Difficulty;
         Firms = (3 + (2*Level));
         double*Market = new double[Firms]; // runtime array [Share Prices]
-        int*Shares = new int[Firms]; // runtime array [Share Count]
+        double*Shares = new double[Firms]; // runtime array [Share Count]
         double*MarketSharesValue = new double[Firms]; // runtime array [Value of share holdings]
 
         for (int mc = 1; mc <= Firms; mc++)
@@ -405,19 +406,61 @@ int main(void)
                 {
                     cout << showpoint << m << " - Firm" << m << " - $" << setprecision(13) << Market[m] << endl;
                 }
+                cout << "Press 0 to cancel" << endl;
                 cin >> Input;
+                while (Input < 0 || Input > Firms)
+                {
+                    cout << "That is not a valid selection!" << endl;
+                    cout << "Please enter an option on the menu: ";
+                    cin >> Input;
+                }
+
                 if (Input == 0)
                 {
                     Days--;
                 }
                 else
                 {
-                    for (int ioc = 1; Input != ioc; ioc++)
-                    {
+                    int selec = Input;
+                    cout << "\n\nYou have selected: Firm" << selec << endl;
+                    cout << showpoint << "You have: $" << Balance << endl;
+                    cout << showpoint << "Each share is worth $" << Market[selec] << endl;
+                    cout << "You currently own " << Shares[selec] << " shares of this firm" << endl;
+                    cout << "Press 1 to buy, Press 2 to sell, or press 3 to cancel.";
+                    cin >> Input;
 
+                    while (Input < 1 || Input > 3)
+                    {
+                        cout << "Invalid input!" << endl;
+                        cout << "Please enter a valid selection on the menu: " << endl;
+                        cin >> Input;
+                    }
+
+                    if (Input == 1)
+                    {
+                        cout << "How many shares would you like to buy?" << endl;
+                        cin >> Input;
+                        if ((Input*Market[selec])>(Balance+20))
+                        {
+                            cout << "You do not have enough money to buy the shares + pay the transaction fee!" << endl;
+                            cout << "Come back later when you have more money!" << endl;
+                            cout << "Perhaps check out the bank?" << endl;
+                            Input = 0;
+                            selec = 0;
+                        }
+                        else
+                        {
+                            Shares[selec] = Input;
+                            Balance = Balance - (Shares[selec]*Market[selec]);
+                            Balance = Balance -20;
+                            cout << "Successfully purchased stocks!" << endl;
+                            cout << "Your balance is now: $" << Balance << endl;
+                        }
                     }
 
                 }
+                DaysChange = 0;
+                Days--;
                 Input = 0;
             }
             else if (Input == 2)
