@@ -440,11 +440,11 @@ int main(void)
                     {
                         cout << "How many shares would you like to buy?" << endl;
                         cin >> Input;
-                        if ((Input*Market[selec])>(Balance+20))
+                        if ((Input*Market[selec])>(Balance-20))
                         {
                             cout << "You do not have enough money to buy the shares + pay the transaction fee!" << endl;
                             cout << "Come back later when you have more money!" << endl;
-                            cout << "Perhaps check out the bank?" << endl;
+                            cout << "Perhaps check out the bank if you haven't yet" << endl;
                             Input = 0;
                             selec = 0;
                         }
@@ -456,6 +456,20 @@ int main(void)
                             cout << "Successfully purchased stocks!" << endl;
                             cout << "Your balance is now: $" << Balance << endl;
                         }
+                    }
+                    if (Input == 2)
+                    {
+                        cout << "How many shares would you like to sell?" << endl;
+                        cin >> Input;
+                        while (Input>Shares[selec])
+                        {
+                            cout << "The number of shares that you are trying to sell exceeds the number of shares" << endl;
+                            cout << "you own.\n" << endl;
+                            cout << "You have: " << Shares[selec] << " shares." << endl;
+                            cout << "How many would you like to sell?:";
+                            cin >> Input;
+                        }
+
                     }
 
                 }
@@ -484,8 +498,8 @@ int main(void)
             }
             else if (Input == 6)
             {
-                cout << "Are you sure you want to quit the game?" << endl;
-                cout << "Your progress will not be saved" << endl;
+                cout << "Are you sure you want to exit the game?" << endl;
+                cout << "Your progress will be removed forever" << endl;
                 cout << "Press 6 to quit, or enter 0 to cancel." << endl;
                 cin >> Input;
                 if (Input == 6)
