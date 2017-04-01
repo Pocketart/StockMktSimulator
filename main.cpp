@@ -522,10 +522,6 @@ int main(void)
         }
     }
 
-//    for (Level = 1; PortfolioValue > 0; Level++)
-//    {
-//
-//    }
 
     for (Days = 1; PortfolioValue > 0; Days++)
     {
