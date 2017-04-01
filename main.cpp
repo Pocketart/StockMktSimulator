@@ -461,7 +461,7 @@ int main(void)
                     {
                         cout << "How many shares would you like to sell?" << endl;
                         cin >> Input;
-                        while (Input>Shares[selec])
+                        while (Input > Shares[selec])
                         {
                             cout << "The number of shares that you are trying to sell exceeds the number of shares" << endl;
                             cout << "you own.\n" << endl;
@@ -469,9 +469,14 @@ int main(void)
                             cout << "How many would you like to sell?:";
                             cin >> Input;
                         }
-
+                        if ((Shares[selec]*Market[selec]) < (5*Difficulty))
+                        {
+                            cout << "The value of your sale is less than the" << endl;
+                            cout << "transaction fee of: $" << (5*Difficulty) << endl;
+                            cout << "Come back after you rethink your sale" << endl;
+                        }
+                        else if ()
                     }
-
                 }
                 DaysChange = 0;
                 Days--;
