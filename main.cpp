@@ -417,7 +417,7 @@ int main(void)
 
                 if (Input == 0)
                 {
-                    Days--;
+                    cout << "Taking you back to the menu . . . . . ." << endl;
                 }
                 else
                 {
@@ -452,8 +452,8 @@ int main(void)
                         {
                             Shares[selec] = (Shares[selec] + Input);
                             Balance = Balance - (Shares[selec]*Market[selec]);
-                            Balance = Balance -20;
-                            cout << "Successfully purchased stocks!" << endl;
+                            Balance = (Balance - 20);
+                            cout << "Successfully purchased shares!" << endl;
                             cout << "Your balance is now: $" << Balance << endl;
                         }
                     }
@@ -477,7 +477,11 @@ int main(void)
                         }
                         else
                         {
-
+                            Shares[selec] = (Shares[selec] - Input);
+                            Balance = Balance + (Input*Market[selec]);
+                            Balance = (Balance - 5*Difficulty);
+                            cout << "Successfully sold " << Input << " shares" << endl;
+                            cout << "Your balance is now: $" << Balance << endl;
                         }
                     }
                 }
