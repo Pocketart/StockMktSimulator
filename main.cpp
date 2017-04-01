@@ -522,18 +522,5 @@ int main(void)
         }
     }
 
-
-    for (Days = 1; PortfolioValue > 0; Days++)
-    {
-        cout << "Day " << Days << endl;
-        cout << "1 - Market" << endl;
-        cout << "2 - Bank" << endl;
-        cout << "3 - Stats" << endl;
-        cout << "4 - One Day Forward" << endl;
-        cout << "5 - One Week Forward" << endl;
-        cout << "6 - Exit Game (stop program)" << endl;
-        cin >> Input;
-    }
-
     return 0;
 }
