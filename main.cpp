@@ -450,7 +450,7 @@ int main(void)
                         }
                         else
                         {
-                            Shares[selec] = Input;
+                            Shares[selec] = (Shares[selec] + Input);
                             Balance = Balance - (Shares[selec]*Market[selec]);
                             Balance = Balance -20;
                             cout << "Successfully purchased stocks!" << endl;
@@ -475,7 +475,10 @@ int main(void)
                             cout << "transaction fee of: $" << (5*Difficulty) << endl;
                             cout << "Come back after you rethink your sale" << endl;
                         }
-                        else if ()
+                        else
+                        {
+
+                        }
                     }
                 }
                 DaysChange = 0;
