@@ -491,7 +491,42 @@ int main(void)
             }
             else if (Input == 2)
             {
-
+                cout << "You have $" << BankBalance << " in your bank account" << endl;
+                cout << "Press 1 to deposit, 2 to withdraw, 3 to borrow, and 0 to cancel bank action" << endl;
+                cout << "Enter selection:";
+                cin >> Input;
+                while (Input < 0 || Input > 2)
+                {
+                    cout << "Invalid Input! Please enter a valid menu selection (0,1,2)" << endl;
+                    cin >> Input;
+                }
+                if (Input == 1)
+                {
+                    cout << "How much money would you like to deposit?";
+                }
+                else if (Input == 2)
+                {
+                    if (BankBalance < -1500)
+                    {
+                        cout << "You can't withdraw money right now because you have a negative balance" << endl;
+                        cout << "greater than $1500" << endl;
+                    }
+                    else
+                    {
+                        cout << "How much money would you like to withdraw?" << endl;
+                        cin >> Input;
+                        while (Input >)
+                    }
+                }
+                else if (Input == 4)
+                {
+                    cout << "How much money would you like to borrow?" << endl;
+                }
+                else if (Input == 0)
+                {
+                    cout << "Bank action successfully cancelled.";
+                    Days--;
+                }
             }
             else if (Input == 3)
             {
