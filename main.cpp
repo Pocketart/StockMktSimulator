@@ -1,5 +1,5 @@
 /*
- * 03/23/2017 6:32PM
+ * 04/10/2017 11:02AM
  * Console Trader 1.0
  *
  * This program has been written as a submission for the APCSP 'Create' PT
@@ -492,19 +492,19 @@ int main(void)
             else if (Input == 2)
             {
                 cout << "You have $" << BankBalance << " in your bank account" << endl;
-                cout << "Press 1 to deposit, 2 to withdraw, 3 to borrow, and 0 to cancel bank action" << endl;
+                cout << "Press 1 to deposit, 2 to withdraw/borrow, and 0 to cancel bank action" << endl;
                 cout << "Enter selection:";
                 cin >> Input;
-                while (Input < 0 || Input > 2)
+                while (Input < 0 || Input > 2) //verify selection
                 {
                     cout << "Invalid Input! Please enter a valid menu selection (0,1,2)" << endl;
                     cin >> Input;
                 }
-                if (Input == 1)
+                if (Input == 1) // deposit money
                 {
                     cout << "How much money would you like to deposit?";
                 }
-                else if (Input == 2)
+                else if (Input == 2) // withdraw and or borrow
                 {
                     if (BankBalance < -1500)
                     {
@@ -514,15 +514,17 @@ int main(void)
                     else
                     {
                         cout << "How much money would you like to withdraw?" << endl;
+                        cout << "A withdrawal larger than the balance in the bank will be counted as a loan" << endl;
                         cin >> Input;
-                        while (Input >)
+                        while ((BankBalance - Input) < (-1500))
+                        {
+                            cout << "You are trying to withdraw/borrow more than the borrowing limit of $1500" << endl;
+                            cout << "Please enter a different value:" << endl;
+                            cin >> Input;
+                        }
                     }
                 }
-                else if (Input == 4)
-                {
-                    cout << "How much money would you like to borrow?" << endl;
-                }
-                else if (Input == 0)
+                else if (Input == 0) // cancel bank action
                 {
                     cout << "Bank action successfully cancelled.";
                     Days--;
@@ -546,7 +548,7 @@ int main(void)
             else if (Input == 6)
             {
                 cout << "Are you sure you want to exit the game?" << endl;
-                cout << "Your progress will be removed forever" << endl;
+                cout << "Your progress will be lost forever" << endl;
                 cout << "Press 6 to quit, or enter 0 to cancel." << endl;
                 cin >> Input;
                 if (Input == 6)
