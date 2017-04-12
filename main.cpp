@@ -550,7 +550,7 @@ int main(void)
                 cout << "Here are your stats:" << endl;
                 cout << "It is day " << Days << ", you have $" << Balance << " as cash" << endl;
 
-                cout << "Your current holdings are worth $"
+                cout << "Your current holdings are worth $";
             }
             else if (Input == 4) // move 1 day forward
             {
