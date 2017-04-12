@@ -356,7 +356,7 @@ int main(void)
             }
             else if (DaysChange > 0)
             {
-                for (int mc = 1; mc <= Firms; mc++)
+                for (int mc = 1; mc <= Firms; mc++) // difficulty and luck
                 {
                     int ranran = 1+rand()%202;
                     if (ranran <= 1 && ranran < 15)
@@ -383,7 +383,7 @@ int main(void)
             }
 
             DaysChange = 0;
-
+            //display menu
             cout << "\n\nIt is now Day " << Days << endl;
             cout << "1 - Market" << endl;
             cout << "2 - Bank" << endl;
@@ -489,7 +489,7 @@ int main(void)
                 Days--;
                 Input = 0;
             }
-            else if (Input == 2)
+            else if (Input == 2) // bank action
             {
                 cout << "You have $" << BankBalance << " in your bank account" << endl;
                 cout << "Press 1 to deposit, 2 to withdraw/borrow, and 0 to cancel bank action" << endl;
@@ -502,7 +502,20 @@ int main(void)
                 }
                 if (Input == 1) // deposit money
                 {
-                    cout << "How much money would you like to deposit?";
+                    cout << "You have $" << Balance << "as cash and" << BankBalance << endl;
+                    cout << "$ in your bank account" << endl;
+                    cout << "How much money would you like to deposit?" << endl;
+                    cin >> Input;
+                    while (Input > Balance) // deposit verify
+                    {
+                        cout << "You can't deposit more than the amount of money you have!" << endl;
+                        cout << "Enter a different value that fits in the range" << endl;
+                        cin >> Input;
+                    }
+                    Balance = Balance - Input;
+                    BankBalance = BankBalance + Input;
+                    cout << "Deposit successful!" << endl;
+                    Days--;
                 }
                 else if (Input == 2) // withdraw and or borrow
                 {
@@ -524,7 +537,7 @@ int main(void)
                         }
                     }
                     cout << "You have successfully withdrawn $" << Input << endl;
-                    cout << "You now have $" << BankBalance << cout << " in your bank account" << endl;
+                    cout << "You now have $" << BankBalance << " in your bank account" << endl;
                 }
                 else if (Input == 0) // cancel bank action
                 {
@@ -532,22 +545,25 @@ int main(void)
                     Days--;
                 }
             }
-            else if (Input == 3)
+            else if (Input == 3) // view stats
             {
                 cout << "Here are your stats:" << endl;
+                cout << "It is day " << Days << ", you have $" << Balance << " as cash" << endl;
+
+                cout << "Your current holdings are worth $"
             }
-            else if (Input == 4)
+            else if (Input == 4) // move 1 day forward
             {
                 cout << "Moving 1 day forward in time . . ." << endl;
                 DaysChange = 1;
             }
-            else if (Input == 5)
+            else if (Input == 5) // move 7 days more forward
             {
                 cout << "Moving 7 days forward in time . . ." << endl;
                 DaysChange = 7;
                 Days = Days + 6;
             }
-            else if (Input == 6)
+            else if (Input == 6) // game exit prompt
             {
                 cout << "Are you sure you want to exit the game?" << endl;
                 cout << "Your progress will be lost forever" << endl;
