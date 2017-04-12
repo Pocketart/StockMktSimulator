@@ -523,6 +523,8 @@ int main(void)
                             cin >> Input;
                         }
                     }
+                    cout << "You have successfully withdrawn $" << Input << endl;
+                    cout << "You now have $" << BankBalance << cout << " in your bank account" << endl;
                 }
                 else if (Input == 0) // cancel bank action
                 {
@@ -549,12 +551,16 @@ int main(void)
             {
                 cout << "Are you sure you want to exit the game?" << endl;
                 cout << "Your progress will be lost forever" << endl;
-                cout << "Press 6 to quit, or enter 0 to cancel." << endl;
+                cout << "Press 6 to quit, or enter any other key to cancel." << endl;
                 cin >> Input;
                 if (Input == 6)
+                {
+                    cout << "Thank you for playing" << endl;
                     return 0;
+                }
                 Days--;
                 DaysChange = 0;
+                Input = 0;
             }
         }
     }
