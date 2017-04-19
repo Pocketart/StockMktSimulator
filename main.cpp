@@ -67,8 +67,8 @@ int main(void)
     while (Difficulty < 1 || Difficulty > 4)
     {
         cout << "That is not a valid selection, please choose either one of the 4 given choices\n" << endl;
-        cout << "1 <----- Easy (Banks do not charge interest rates, relatively stable markets)" << endl;
-        cout << "2 <----- Normal (Banks charge interest rates, relatively volatile markets)" << endl;
+        cout << "1 <----- Easy (Use this if you're new)" << endl;
+        cout << "2 <----- Normal (S)" << endl;
         cout << "3 <----- Hard (Banks charge high rates, volatile markets, high transaction price)" << endl;
         cout << "4 <----- Advanced (Hard difficulty + spontaneous government policies + inflation)" << endl;
         cin >> Difficulty;
@@ -351,7 +351,13 @@ int main(void)
         {
             if (DaysChange == 0)
             {
-
+                PortfolioValue = 0;
+                for (int calck = 1; calck <= Firms; calck++)
+                {
+                    MarketSharesValue[calck] = Market[calck] * Shares[calck];
+                    PortfolioValue = PortfolioValue + MarketSharesValue[calck];
+                }
+                PortfolioValue = PortfolioValue + Balance + BankBalance;
             }
             else if (DaysChange > 0)
             {
@@ -386,7 +392,6 @@ int main(void)
                     MarketSharesValue[calck] = Market[calck] * Shares[calck];
                     PortfolioValue = PortfolioValue + MarketSharesValue[calck];
                 }
-                PortfolioValue = PortfolioValue + Balance + BankBalance;
             }
 
             DaysChange = 0;
@@ -557,8 +562,8 @@ int main(void)
             else if (Input == 3) // view stats
             {
                 cout << "Here are your stats:" << endl;
-                cout << "It is day " << Days << ", and you have $" << Balance << " as cash" << endl;
-                cout << "Your current holdings are worth $" << PortfolioValue << endl;
+                cout << setprecision(5) << "It is day " << Days << ", and you have $" << Balance << " as cash" << endl;
+                cout << setprecision(5) << "Your current holdings are worth $" << PortfolioValue << endl;
             }
             else if (Input == 4) // move 1 day forward
             {
@@ -588,6 +593,5 @@ int main(void)
             }
         }
     }
-
     return 0;
 }
