@@ -315,7 +315,7 @@ int main(void)
     cout << "Before you begin, I would like to remind you that your progress will not be saved" << endl << endl;
 
     // Fill default values
-    Target = 4000*(Difficulty/2);
+    int Target = 4000*(Difficulty/2);
 
 
     for (int Level = 1; Level <= 5; Level++)
