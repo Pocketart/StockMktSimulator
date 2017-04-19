@@ -503,8 +503,8 @@ int main(void)
                 }
                 if (Input == 1) // deposit money
                 {
-                    cout << "You have $" << Balance << "as cash and" << BankBalance << endl;
-                    cout << "$ in your bank account" << endl;
+                    cout << "You have $" << Balance << " as cash and $" << BankBalance << endl;
+                    cout << "in your bank account" << endl;
                     cout << "How much money would you like to deposit?" << endl;
                     cin >> Input;
                     while (Input > Balance) // deposit verify
