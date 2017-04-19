@@ -58,19 +58,19 @@ int main(void)
     cin >> Age;
 
     cout << "How difficult would you like the game to be? (select a number)" << endl;
-    cout << "1 <----- Easy (Banks do not charge interest rates, relatively stable markets)" << endl;
-    cout << "2 <----- Normal (Banks charge interest rates, relatively volatile markets)" << endl;
-    cout << "3 <----- Hard (Banks charge high rates, volatile markets, high transaction price)" << endl;
-    cout << "4 <----- Advanced (Hard difficulty + spontaneous government policies + inflation)" << endl;
+    cout << "1 <----- Easy (Use this if you are new)" << endl;
+    cout << "2 <----- Normal (Standard)" << endl;
+    cout << "3 <----- Hard (Slightly Difficult)" << endl;
+    cout << "4 <----- Advanced (Are you sure?)" << endl;
     cin >> Difficulty;
 
     while (Difficulty < 1 || Difficulty > 4)
     {
         cout << "That is not a valid selection, please choose either one of the 4 given choices\n" << endl;
-        cout << "1 <----- Easy (Use this if you're new)" << endl;
-        cout << "2 <----- Normal (S)" << endl;
-        cout << "3 <----- Hard (Banks charge high rates, volatile markets, high transaction price)" << endl;
-        cout << "4 <----- Advanced (Hard difficulty + spontaneous government policies + inflation)" << endl;
+        cout << "1 <----- Easy (Use this if you are new)" << endl;
+        cout << "2 <----- Normal (Standard)" << endl;
+        cout << "3 <----- Hard (Slightly Difficult)" << endl;
+        cout << "4 <----- Advanced (Are you sure?)" << endl;
         cin >> Difficulty;
     }
 
@@ -325,7 +325,6 @@ int main(void)
     cout << "Before you begin, I would like to remind you that your progress will not be saved" << endl << endl;
 
     // Fill default values
-    Level = 1;
     Target = 4000*(Difficulty/2);
 
 
@@ -333,9 +332,8 @@ int main(void)
     {
         StartingCash = 3000/(Difficulty+Level-1);
         Balance = StartingCash;
-        PortfolioValue = 1000;
+        PortfolioValue = Balance;
         BankBalance = 0;
-        LoanLimit = 5000/Difficulty;
         Firms = (3 + (2*Level));
         double*Market = new double[Firms]; // runtime array [Share Prices]
         double*Shares = new double[Firms]; // runtime array [Share Count]
@@ -358,6 +356,12 @@ int main(void)
                     PortfolioValue = PortfolioValue + MarketSharesValue[calck];
                 }
                 PortfolioValue = PortfolioValue + Balance + BankBalance;
+                if (PortfolioValue < 0)
+                {
+                    cout << "You are broke." << endl;
+                    cout << "Game Over!" << endl;
+                    return 0;
+                }
             }
             else if (DaysChange > 0)
             {
@@ -392,6 +396,7 @@ int main(void)
                     MarketSharesValue[calck] = Market[calck] * Shares[calck];
                     PortfolioValue = PortfolioValue + MarketSharesValue[calck];
                 }
+                PortfolioValue = PortfolioValue + Balance + BankBalance;
             }
 
             DaysChange = 0;
@@ -563,7 +568,9 @@ int main(void)
             {
                 cout << "Here are your stats:" << endl;
                 cout << setprecision(5) << "It is day " << Days << ", and you have $" << Balance << " as cash" << endl;
-                cout << setprecision(5) << "Your current holdings are worth $" << PortfolioValue << endl;
+                cout << setprecision(5) << "Your bank account balance is $" << BankBalance << endl;
+                cout << setprecision(5) << "Your portfolio is worth $" << PortfolioValue << endl;
+                Days--;
             }
             else if (Input == 4) // move 1 day forward
             {
@@ -592,6 +599,9 @@ int main(void)
                 Input = 0;
             }
         }
+        delete Market;
+        delete MarketSharesValue;
+        delete Shares;
     }
     return 0;
 }
