@@ -24,25 +24,15 @@ int main(void)
     int Days; // Days counter: Market will update on a daily basis
     int DaysChange; // Days counter buffer variable
     int StartingCash; // Starting amount of cash, decided by difficulty factor
-    int Level; // Stage level
     int Difficulty; // Difficulty factor as selected by user
     int Age; // User profile
     int Firms; // Number of firms offering shares (increases by 3 per increment in Level)
-    int Target; // Target Balance to reach to advance to next level
-    int LoanAge; // Days since last bank loan
-    int DepositAge; // Age of bank deposit in days (resets when any value is withdrawn)
     int Input; // Stores user int input for interaction
     double DoubleIn; // Stores user double input for interaction
     string Name; // User profile
-    double BankMax; // Max Amount of Money that can be borrowed at a given point in time
     double Balance; // User balance in cash
     double BankBalance; // User balance in bank
-    double LoanLimit;
-    double IntRate; // Bank deposit interest rate
-    double LoanOutRate; // Loan out return rate
     double PortfolioValue; // The total value of all the user's market holdings
-    double TransferRate; // Transfer Payment Rate for buying/selling shares
-    double LevelDiffMult; // Variable by level, affects stock market dynamo
 
     // Create Random
     unsigned seed = time(0);
