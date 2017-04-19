@@ -380,6 +380,7 @@ int main(void)
                     else if (ranran == 202)
                         Market[mc] = Market[mc]*0.32;
                 }
+                BankBalance = BankBalance * 1.0017;
             }
 
             DaysChange = 0;
@@ -536,6 +537,8 @@ int main(void)
                             cin >> Input;
                         }
                     }
+                    BankBalance = BankBalance - Input;
+                    Balance = Balance + Input;
                     cout << "You have successfully withdrawn $" << Input << endl;
                     cout << "You now have $" << BankBalance << " in your bank account" << endl;
                 }
