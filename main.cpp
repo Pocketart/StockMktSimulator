@@ -319,8 +319,7 @@ int main(void)
 
     /* * * * * * * * * * * * *
      * Begin the actual game *
-     * * * * * * * * * * * * *
-     */
+     * * * * * * * * * * * * */
 
     cout << "The game will now begin with your difficulty level set to " << Difficulty << endl;
     cout << "Before you begin, I would like to remind you that your progress will not be saved" << endl << endl;
@@ -551,9 +550,13 @@ int main(void)
             else if (Input == 3) // view stats
             {
                 cout << "Here are your stats:" << endl;
-                cout << "It is day " << Days << ", you have $" << Balance << " as cash" << endl;
-
-                cout << "Your current holdings are worth $";
+                cout << "It is day " << Days << ", and you have $" << Balance << " as cash" << endl;
+                for (int calck = 1; calck <= Firms; calck++)
+                {
+                    MarketSharesValue[calck] = Market[calck] * Shares[calck];
+                    PortfolioValue = PortfolioValue + MarketSharesValue[calck];
+                }
+                cout << "Your current holdings are worth $" << PortfolioValue << endl;
             }
             else if (Input == 4) // move 1 day forward
             {
