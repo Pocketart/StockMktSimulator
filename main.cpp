@@ -367,19 +367,26 @@ int main(void)
                     else if (ranran >= 90 && ranran < 100)
                         Market[mc] = Market[mc]*1.1;
                     else if (ranran >= 100 && ranran < 115)
-                        Market[mc] = Market[mc]*0.80;
+                        Market[mc] = Market[mc]*(0.80/Difficulty);
                     else if (ranran >= 115 && ranran < 145)
-                        Market[mc] = Market[mc]*0.93;
+                        Market[mc] = Market[mc]*(0.93/Difficulty);
                     else if (ranran >= 145 && ranran < 190)
-                        Market[mc] = Market[mc]*0.95;
+                        Market[mc] = Market[mc]*(0.95/Difficulty);
                     else if (ranran >= 190 && ranran <= 200)
-                        Market[mc] = Market[mc]*0.87;
+                        Market[mc] = Market[mc]*(0.87/Difficulty);
                     else if (ranran == 201)
                         Market[mc] = Market[mc]*3.3;
                     else if (ranran == 202)
-                        Market[mc] = Market[mc]*0.32;
+                        Market[mc] = Market[mc]*0.32/Difficulty;
                 }
-                BankBalance = BankBalance * 1.0017;
+                BankBalance = BankBalance * 1.0018;
+                PortfolioValue = 0;
+                for (int calck = 1; calck <= Firms; calck++)
+                {
+                    MarketSharesValue[calck] = Market[calck] * Shares[calck];
+                    PortfolioValue = PortfolioValue + MarketSharesValue[calck];
+                }
+                PortfolioValue = PortfolioValue + Balance + BankBalance;
             }
 
             DaysChange = 0;
@@ -551,11 +558,6 @@ int main(void)
             {
                 cout << "Here are your stats:" << endl;
                 cout << "It is day " << Days << ", and you have $" << Balance << " as cash" << endl;
-                for (int calck = 1; calck <= Firms; calck++)
-                {
-                    MarketSharesValue[calck] = Market[calck] * Shares[calck];
-                    PortfolioValue = PortfolioValue + MarketSharesValue[calck];
-                }
                 cout << "Your current holdings are worth $" << PortfolioValue << endl;
             }
             else if (Input == 4) // move 1 day forward
